@@ -3,9 +3,10 @@ import { supabase } from '@/lib/supabase'
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await props.params
     const body = await request.json()
     const { status } = body
 
@@ -14,7 +15,7 @@ export async function PATCH(
     }
 
     const updates: any = { status }
-    
+
     // 승인 시 spotlight_at 설정
     if (status === 'approved') {
       updates.spotlight_at = new Date().toISOString()
@@ -39,9 +40,10 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await props.params
     const { error } = await supabase
       .from('posts')
       .delete()
