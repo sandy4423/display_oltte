@@ -4,28 +4,38 @@ import { supabase } from '@/lib/supabase'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    
-    // Forms App 데이터를 우리 형식에 맞게 매핑
-    // 실제 Forms App의 데이터 구조에 따라 수정 필요
-    const {
-      message,
-      content, 
-      text,
-      name,
-      submitter,
-      image,
-      media,
-      channel = 'main'
-    } = body
 
-    // 여러 가능한 필드명에서 내용 추출
-    const postContent = message || content || text
-    const postSubmitter = name || submitter
-    const postMedia = image || media
+    // Forms App webhook 구조 파싱 (Form 2: 실시간 응원 담벼락)
+    const { form, answer } = body
 
-    if (!postContent) {
-      return NextResponse.json({ error: 'No content found in request' }, { status: 400 })
+    // 답변에서 데이터 추출
+    let postContent = ''
+    let last4Digits = ''
+
+    if (answer && answer.answers) {
+      // 각 질문의 답변 추출
+      for (const answerItem of answer.answers) {
+        // 텍스트 답변 (응원메시지)
+        if (answerItem.t && answerItem.t.trim()) {
+          postContent = answerItem.t
+        }
+
+        // 숫자 답변 (전화번호 뒤 4자리)
+        if (answerItem.n !== undefined && answerItem.n !== null) {
+          last4Digits = String(answerItem.n)
+        }
+      }
     }
+
+    // 기본 메시지가 없으면 기본 문구 사용
+    if (!postContent || !postContent.trim()) {
+      postContent = '올때만두를 응원합니다! 🥟'
+    }
+
+    // 전화번호 뒷자리 4자리 사용
+    const postSubmitter = last4Digits || '익명'
+
+    const channel = 'main'
 
     // 모더레이션 규칙 확인
     const { data: rules } = await supabase
@@ -35,13 +45,13 @@ export async function POST(request: NextRequest) {
       .single()
 
     let status = 'pending'
-    
+
     if (rules?.allow_auto_approve) {
       // 금칙어 확인
       const hasBannedWord = rules.banned_keywords.some(keyword =>
         postContent.toLowerCase().includes(keyword.toLowerCase())
       )
-      
+
       if (!hasBannedWord) {
         status = 'approved'
       }
@@ -50,7 +60,7 @@ export async function POST(request: NextRequest) {
     const postData = {
       channel_id: channel,
       content: postContent,
-      media_url: postMedia,
+      media_url: null,
       submitter: postSubmitter,
       status,
       spotlight_at: status === 'approved' ? new Date().toISOString() : null
@@ -66,13 +76,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       data,
       message: status === 'approved' ? 'Post approved and published' : 'Post received and pending approval'
     }, { status: 201 })
   } catch (error) {
-    console.error('Forms App ingest error:', error)
+    console.error('Forms App Form2 ingest error:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

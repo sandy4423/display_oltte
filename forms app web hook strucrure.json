@@ -1,0 +1,205 @@
+{
+    "form": {
+      "baseSettings": {
+        "removeBranding": true,
+        "steps": false,
+        "isRtl": false,
+        "autoPassSingle": true,
+        "backButton": false,
+        "cardDesignFadeIn": false,
+        "isEnabledSaveAsDraft": true,
+        "isEnabledSignupForSaveAsDraft": false,
+        "isEnabledMessages": true,
+        "isShouldShowCookieModal": false,
+        "preventMultipleSubmissions": false,
+        "cardDesign": true,
+        "forceShowCaptchaFromAdmin": false,
+        "hideCaptcha": false,
+        "hideQuestionNumber": true,
+        "questionMustValid": true,
+        "isDisabledMessages": true
+      },
+      "hasEmailNotification": false,
+      "pushNotification": true,
+      "hasWebhookTrigger": true,
+      "hasIntegration": true,
+      "_id": "66e3f48d7dbdbc2ffb4cf1ff",
+      "title": "올때만두 사전등록 이벤트",
+      "questions": [
+        {
+          "_id": "68ebeb84e98858554bbb1695",
+          "isDeleted": false,
+          "isActive": true,
+          "displayOrder": 0,
+          "questionType": "wysiwyg",
+          "question": "Enter your explanation here.",
+          "showOnResponses": false,
+          "wysiwyg": {
+            "content": "[p][b]올때만두 송도본점 오픈 기념 이벤트 🎉[/b][/p][p][br][/p][p]안녕하세요 e편한세상송도 이웃여러분~[/p][p]손님 맞을 준비 중이에요![/p][p][br][/p][p]앞으로의 오픈행사 소식도 먼저 받고, [/p][p]왕만두 무료쿠폰도 받아가세요 😋[/p][p][br][/p][p](소근소근: 11월 7일 오픈합니다!)[/p]"
+          }
+        },
+        {
+          "phone": {
+            "labels": {
+              "countrycode": "Country code",
+              "areacode": "Area code",
+              "extension": "Extension"
+            },
+            "mask": false,
+            "maskPattern": "010-****-****",
+            "isShowCountrycode": false,
+            "isShowAreacode": false,
+            "isShowExtension": false
+          },
+          "_id": "68ebdda7e98858554bbb1678",
+          "isDeleted": false,
+          "isActive": true,
+          "question": "전화번호를 입력해주세요! [br]오픈 시 왕만두 1개를 무료로 드립니다 😄",
+          "isRequired": true,
+          "questionType": "phone",
+          "displayOrder": 1,
+          "placeholder": "010-1234-1234",
+          "description": ""
+        },
+        {
+          "_id": "68f99334893c34a1af6eff89",
+          "isDeleted": false,
+          "isActive": false,
+          "questionType": "choice",
+          "question": "입력하신 번호는 무료쿠폰 발송 및 향후 스탬프 적립 고객 관리용으로만 사용되며,[br][b][u]언제든 삭제 요청 가능[/u][/b]합니다.",
+          "displayOrder": 2,
+          "isRequired": false,
+          "choice": {
+            "subType": "singlechoice",
+            "optionText": "동의합니다",
+            "options": [
+              {
+                "_id": "68f99334893c34a1af6eff87",
+                "text": "동의합니다"
+              }
+            ],
+            "defaultValue": []
+          },
+          "description": "이 외 목적으로는 절대 사용하지 않습니다."
+        },
+        {
+          "_id": "68ec4deae063812ad6083d9e",
+          "isDeleted": false,
+          "isActive": true,
+          "question": "하고싶은 말, 또는 응원의 한마디!",
+          "isRequired": false,
+          "questionType": "text",
+          "displayOrder": 3,
+          "text": {
+            "subType": "shorttext"
+          },
+          "description": "(저도 e편한세상 주민입니다..! 열심히 할게요 응원해주세요 여러분!)"
+        },
+        {
+          "_id": "68f8679126e4a05dc44129d1",
+          "isDeleted": false,
+          "isActive": false,
+          "questionType": "choice",
+          "question": "유입",
+          "displayOrder": 4,
+          "isRequired": false,
+          "choice": {
+            "subType": "singlechoice",
+            "optionText": "현수막\n쓰레드\n아파트너",
+            "options": [
+              {
+                "_id": "68f8679126e4a05dc44129cf",
+                "text": "현수막"
+              },
+              {
+                "_id": "68f8679126e4a05dc44129d0",
+                "text": "쓰레드"
+              },
+              {
+                "_id": "68f86ef283ce8bb4af2c78ab",
+                "text": "아파트너"
+              }
+            ],
+            "defaultValue": [],
+            "other": false
+          },
+          "description": "어디서 보고 들어오셨나요!"
+        }
+      ],
+      "userId": "66e24ac6217364719a117f85",
+      "calculators": [],
+      "url": "untitled-form-1"
+    },
+    "answer": {
+      "userId": "66e24ac6217364719a117f85",
+      "userInfo": {},
+      "formId": "66e3f48d7dbdbc2ffb4cf1ff",
+      "hasHookTrigger": true,
+      "answers": [
+        {
+          "q": "68ebdda7e98858554bbb1678",
+          "p": {
+            "p": "01085355548"
+          }
+        },
+        {
+          "q": "68f99334893c34a1af6eff89",
+          "c": [
+            {
+              "t": "동의합니다",
+              "v": "68f99334893c34a1af6eff87"
+            }
+          ]
+        },
+        {
+          "q": "68ec4deae063812ad6083d9e",
+          "t": ""
+        },
+        {
+          "q": "68f8679126e4a05dc44129d1",
+          "c": [
+            {
+              "t": "아파트너",
+              "v": "68f86ef283ce8bb4af2c78ab"
+            }
+          ]
+        }
+      ],
+      "formElementAnswers": [],
+      "answerFiles": [],
+      "reduceFromStock": null,
+      "formOwnerEmailConfirmed": true,
+      "formOwnerLang": "en",
+      "formOwnerUsername": "dotoryworld",
+      "formOwnerCulture": "ko-KR",
+      "formOwnerTimezone": "Korea Standard Time",
+      "formOwnerDefaultDomain": "26ovlk4s.forms.app",
+      "publicId": "4300710f1cd556",
+      "point": null,
+      "completeSecond": 22,
+      "draftId": null,
+      "formVersion": 44,
+      "formTitle": "올때만두 사전등록 이벤트",
+      "currentUserId": null,
+      "thankYouPageSettings": {
+        "_id": "670404ccf776312cad275be5",
+        "redirectAfterSubmit": true,
+        "showStatistic": false,
+        "isSaveAndReturn": false,
+        "desc": "[h2][br][/h2]",
+        "showShare": false,
+        "showPublicId": false,
+        "showPrintButton": false,
+        "title": "Ending",
+        "showThankYouPage": false,
+        "redirectUrl": "http://pf.kakao.com/_xmKULn/coupons/_XqUo44n",
+        "statisticTitle": "",
+        "statisticDesc": ""
+      },
+      "language": "ko",
+      "typId": "670404ccf776312cad275be5",
+      "answerId": "68f9ad0670ca7723f8495c4c",
+      "createDate": "2025-10-23T04:20:22.789Z",
+      "retryCount": 0
+    }
+  }
