@@ -8,7 +8,8 @@
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
       "Bash(psql:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Forms App 기반 실시간 담벼락 디스플레이 시스템\n\nNext.js 기반의 Forms App 연동 담벼락 디스플레이 시스템 초기 구성\n- Admin 대시보드 (채널/게시물/모더레이션 관리)\n- Screen 디스플레이 (Spotlight + Wall 모드)\n- Supabase 연동 (PostgreSQL + Realtime)\n- API Routes (FormsApp 연동, 관리자 API)\n- 데이터베이스 스키마 및 문서\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": []
   }
