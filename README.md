@@ -1,4 +1,4 @@
-# Forms Wall Display System
+# Forms Wall Display System (올때만두 반응형 사이니지)
 
 Forms App 기반 실시간 담벼락 디스플레이 시스템입니다.
 
